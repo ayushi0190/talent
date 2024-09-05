@@ -1,0 +1,38 @@
+{
+    "executionRoleArn": "arn:aws:iam::242862569447:role/ecsadmin",
+    "containerDefinitions": [
+        {
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/talentmatcher",
+                    "awslogs-region": "ap-south-1",
+                    "awslogs-create-group": "true",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "portMappings": [
+                {
+                    "hostPort": 9003,
+                    "protocol": "tcp",
+                    "containerPort": 9003
+                }
+            ],
+            "cpu": 0,
+            "image": "242862569447.dkr.ecr.ap-south-1.amazonaws.com/talentmatcher:v15",
+            "name": "talentmatcher"
+        }
+    ],
+    "memory": "65536",
+    "taskRoleArn": "arn:aws:iam::242862569447:role/ecsadmin",
+    "family": "talentmatcher",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "runtimePlatform": {
+        "operatingSystemFamily": "LINUX",
+        "cpuArchitecture": "X86_64"
+    },
+    "cpu": "16384"
+}

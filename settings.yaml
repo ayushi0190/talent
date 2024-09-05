@@ -1,0 +1,77 @@
+# ENV: DEVELOPMENT
+# ENV: PRODUCTION
+ENV: AWS_ENV
+DEFAULT:
+  ALLOWED_HOSTS:
+    - "*"
+  PORT: 9003
+  LOGGING_FILENAME: "access.log"
+  LOGGING_FORMAT: "<level>{level: <8}</level> <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> request id: {extra[request_id]} - <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  SECRET_KEY: "xp$@i8bx9e(i+4mlpql%drich43)k8i_&-tvz8)_4tnyppolc("
+  LANGUAGE_CODE: "en-us"
+  TIME_ZONE: "UTC"
+  USE_I18N: true
+  USE_L10N: true
+  USE_TZ: true
+
+DEVELOPMENT:
+  DEBUG: true
+  LOGGING:
+    LOGGERS_DEFAULT_LEVEL: DEBUG
+    LOGGING_FILENAME: "access.log"
+    LOGGING_FORMAT: "<level>{level: <8}</level> <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> request id: {extra[request_id]} - <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  STATIC_URL: "/static/"
+  DATABASES:
+    DB_ENGINE: "mongodb"
+    DB_HOST: "localhost"
+    # DB_HOST: "172.17.0.5"
+    DB_PORT: 27017
+    DB_USERNAME: ""
+    DB_PASSWORD: ""
+    DB_NAME: "recruitai_talentmatcher"
+
+AWS_ENV:
+  DEBUG: false
+  STATIC_URL: "/static/"
+  LOGGING:
+    LOGGERS_DEFAULT_LEVEL: INFO
+    LOGGING_FILENAME: "access.log"
+    LOGGING_FORMAT: "<level>{level: <8}</level> <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> request id: {extra[request_id]} - <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  DATABASES:
+    DB_ENGINE: "mongo"
+    DB_HOST: "127.0.0.1"
+    DB_PORT: 27017
+    DB_USERNAME: "admin"
+    DB_PASSWORD: "password"
+    DB_NAME: "recruitai_talentmatcher"
+    DB_CLUSTERIDENTIFIER: "docdb-mongo-2023-05-28-15-26-36"
+    SSL: true
+    SSL_CERT: "src/cert/global-bundle.pem"
+
+#  REDIS_PASSWORD: "3RgzpsfCgpTMabUM"
+  REDIS_HOST: "127.0.0.1"
+  REDIS_PORT: "6379"
+
+PRODUCTION:
+  DEBUG: false
+  STATIC_URL: "/static/"
+  LOGGING:
+    LOGGERS_DEFAULT_LEVEL: INFO
+    LOGGING_FILENAME: "access.log"
+    LOGGING_FORMAT: "<level>{level: <8}</level> <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> request id: {extra[request_id]} - <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+  DATABASES:
+    DB_ENGINE: "mongo"
+    DB_HOST: ""
+    DB_PORT: 27017
+    DB_USERNAME: ""
+    DB_PASSWORD: ""
+    DB_NAME: ""
+    DB_CLUSTERIDENTIFIER:
+    SSL: true
+    SSL_CERT: "src/cert/global-bundle.pem"
+  AWS:
+    AWS_REGION: ap-south-1
+    AWS_SECRET_NAME: matcher_recruitai
+    REDIS_PASSWORD: ""
+    REDIS_HOST: ""
+    REDIS_PORT: ""
